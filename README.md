@@ -11,8 +11,8 @@ Espressoで、CoffeeScriptを扱うためのプラグインです。
 
 * シンタックスカラーリング (artisonianさんが実装済み)
 * コード補完 (CodeSense)
-** JavaScriptのオブジェクト・関数 - 完了
-** 構文 - 一部のみ
+	* JavaScriptのオブジェクト・関数 - 完了
+	* 構文 - 一部のみ
 
 
 TODO
