@@ -8,6 +8,7 @@ This is a port of the [CoffeeScript Textmate Bundle][tmbundle] written by Jeremy
 このSugarについて
 ---
 Espressoで、CoffeeScriptを扱うためのプラグインです。
+
 * シンタックスカラーリング (artisonianさんが実装済み)
 * コード補完 (CodeSense)
 ** JavaScriptのオブジェクト・関数 - 完了
