@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<codesense>
+
+	<!-- Keywords -->
+	<provider>
+		<!--
+			Should this be more selective?
+			
+			Or should I break the keywords down into groups and try to target them based on much narrower contexts? This seems like a little more work than payoff (and easy possibility to make assumptions based on my own coding style), but right now all of these keywords popping up everywhere is a little weird.
+		-->
+		<selector>coffee, coffee *:not(string,string *,comment,regex,regex *)</selector>
+		<completions>org.coffeescript.keywords.control</completions>
+		<complete-match>(?&lt;!\.|\[|\(|,)\b[a-zA-Z]*</complete-match>
+	</provider>
+	
+	<!-- Loop / Condition Keywords -->
+	<provider>
+		<selector>coffee, coffee *:not(string,string *,comment,regex,regex *)</selector>
+		<completions>org.coffeescript.keywords.condition</completions>
+		<completions>org.coffeescript.keywords.loop</completions>
+		<completions>org.coffeescript.keywords.class</completions>
+		<complete-match capture="1">^\s*([a-zA-Z][a-zA-Z ]*)</complete-match>
+	</provider>
+	
+	<!-- Postfix Loop /Condition Keywords -->
+	<provider>
+		<selector>coffee, coffee *:not(string,string *,comment,regex,regex *)</selector>
+		<completions>org.coffeescript.keywords.condition.appended</completions>
+		<completions>org.coffeescript.keywords.loop.appended</completions>
+		<complete-match capture="1">[^\s] ([a-zA-Z]*)</complete-match>
+	</provider>
+	
+	<!-- Non-control keywords -->
+	<provider>
+		<selector>coffee, coffee *:not(string,string *,comment,regex,regex *)</selector>
+		<completions>org.coffeescript.keywords</completions>
+		<complete-match>(?&lt;!\.)\b[a-zA-Z]*</complete-match>
+	</provider>
+	
+	<!-- Variables and functions -->
+	<provider>
+		<selector>coffee, coffee *:not(string,string *,comment,variable,regex,regex *)</selector>
+		<!--Functions-->
+		<completions>org.coffeescript.functions</completions>
+		<complete-match>(?&lt;!\.)\b[a-zA-Z]*</complete-match>
+	</provider>
+	
+	<!--Properties and Methods-->
+	<provider>
+		<selector>coffee, coffee *:not(string,string *,comment,regex,regex *)</selector>
+		<completions>org.coffeescript.properties</completions>
+		<completions>org.coffeescript.methods</completions>
+		<complete-match capture="1">\.([a-zA-Z][a-zA-Z ]*)</complete-match>
+	</provider>
+	
+	<!--Javascript native objects-->
+	<provider>
+		<selector>coffee, coffee *:not(string,string *,comment,regex,regex *)</selector>
+		<completions>org.coffeescript.natives</completions>
+		<complete-match capture="1">\bnew\s+([a-zA-Z]*)</complete-match>
+	</provider>
+	
+	<provider>
+		<selector>coffee, coffee *:not(string,string *,comment,regex,regex *)</selector>
+		<completions>org.coffeescript.natives.static</completions>
+		<!--This lookbehind is fragile (what if they have more than one space after `new`?), but it's the only way I can prevent duplicate CodeSense in constructors-->
+		<complete-match>(?&lt;!new )\b[A-Z][a-zA-Z]*</complete-match>
+	</provider>
+	
+	<!-- TODO: This needs to change to support some form of variable substitution in the completion ID -->
+	<provider>
+		<selector>coffee, coffee *:not(string,string *,comment,regex,regex *)</selector>
+		<completions>org.coffeescript.native.Date</completions>
+		<complete-match capture="1">\bDate\.(\w*)</complete-match>
+	</provider>
+	<provider>
+		<selector>coffee, coffee *:not(string,string *,comment,regex,regex *)</selector>
+		<completions>org.coffeescript.native.Math</completions>
+		<complete-match capture="1">\bMath\.(\w*)</complete-match>
+	</provider>
+	<provider>
+		<selector>coffee, coffee *:not(string,string *,comment,regex,regex *)</selector>
+		<completions>org.coffeescript.native.Number</completions>
+		<complete-match capture="1">\bNumber\.(\w*)</complete-match>
+	</provider>
+	<provider>
+		<selector>coffee, coffee *:not(string,string *,comment,regex,regex *)</selector>
+		<completions>org.coffeescript.native.String</completions>
+		<complete-match capture="1">\bString\.(\w*)</complete-match>
+	</provider>
+	<provider>
+		<selector>coffee, coffee *:not(string,string *,comment,regex,regex *)</selector>
+		<completions>org.coffeescript.native.Node</completions>
+		<complete-match capture="1">\bNode\.(\w*)</complete-match>
+	</provider>
+</codesense>
